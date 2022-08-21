@@ -20,8 +20,6 @@ import 'leaflet/dist/leaflet.css';
 
 import { faServer, faEnvelope, faHandPointer, faNewspaper, faCircleLeft, faMobile, faAnglesRight } from '@fortawesome/free-solid-svg-icons'
 import { faAndroid, faApple, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import 'vue-fullpage.js/dist/style.css'
-const VueFullPage = require('vue-fullpage.js');
 
 library.add(faServer, faAndroid, faApple, faLinkedin, faEnvelope, faHandPointer, faNewspaper, faCircleLeft, faMobile, faAnglesRight);
 
@@ -34,7 +32,6 @@ Vue.component('l-tile-layer', LTileLayer);
 Vue.component('l-marker', LMarker);
 Vue.component('vue-draggable-resizable', VueDraggableResizable);
 Vue.use(VueSmoothScroll);
-Vue.use(VueFullPage);
 
 new Vue({
   router,
