@@ -187,7 +187,7 @@
         </section>
         <section id="section-contacts" ref="sectionContact" class="d-flex justify-content-center">
             <div class="w-50 h-100 d-flex align-items-center">
-              <div class="row pt-3 pb-3 pr-3">
+              <div class="row pt-5 pb-3 pr-3 mt-5">
                 <div class="col-5 p-0 d-flex align-items-center justify-content-center"> 
                   <PersonalCard />
                 </div>
@@ -200,45 +200,61 @@
                     </p>
                     <hr />
 
+                    <v-form
+                        ref="contactForm"
+                        v-model="contactFormValid"
+                        lazy-validation
+                      >
+
                     <div class="row">
-                      <div class="col-6">
-                        <v-text-field
-                        v-model="contactName"
-                        :label="$t('contactName')"
-                        required
+                      
+
+                        <div class="col-6">
+                          <v-text-field
+                          v-model="contactName"
+                          :label="$t('contactName')"
+                          required
+                          :rules="contactNameRules"
+                          ></v-text-field>
+                        </div>
+
+                        <div class="col-6">
+                          <v-text-field
+                          v-model="contactEmail"
+                          :label="$t('contactEmail')"
+                          :rules="contactEmailRules"
+                          required
                         ></v-text-field>
+                        </div>
                       </div>
 
-                      <div class="col-6">
-                        <v-text-field
-                        v-model="contactEmail"
-                        :label="$t('contactEmail')"
-                        required
-                      ></v-text-field>
+                      <v-select
+                        :items="contactReasons"
+                        filled
+                        v-model="contactReason"
+                        :label="$t('contactReason')"
+                        :rules="[v => !!v || $t('contactReasonRuleRequired')]"
+                      ></v-select>
+
+                      <v-textarea
+                        solo
+                        name="input-7-4"
+                        noResize
+                        v-model="contactMessage"
+                        :rules="contactMessageRules"
+                        :label="$t('contactMessage')"
+                      ></v-textarea>
+
+                      <div class="w-100 d-flex justify-content-end">
+                        <button 
+                        type="button" 
+                        @click="sendContactMessage"
+                        class="btn btn-primary text-white" style="font-weight: 600; letter-spacing: 1.2px;">
+                        {{ $t('contactSend')}}
+                        <font-awesome-icon icon="fa-solid fa-angles-right" />
+                        </button>
                       </div>
-                    </div>
-
-                    <v-select
-                      :items="contactReasons"
-                      filled
-                      :label="$t('contactReason')"
-                    ></v-select>
-
-                    <v-textarea
-                      solo
-                      name="input-7-4"
-                      noResize
-                      :label="$t('contactMessage')"
-                    ></v-textarea>
-
-                    <div class="w-100 d-flex justify-content-end">
-                      <button 
-                      type="button" 
-                      class="btn btn-primary text-white" style="font-weight: 600; letter-spacing: 1.2px;">
-                      {{ $t('contactSend')}}
-                      <font-awesome-icon icon="fa-solid fa-angles-right" />
-                      </button>
-                    </div>
+                    </v-form>
                   </div>
                     
                 </div>
@@ -246,6 +262,37 @@
                 </div>
             </div>
         </section>
+
+        <v-dialog
+          v-model="contactMessageSentDialog"
+          width="500"
+        >
+          <v-card>
+            <v-toolbar
+              color="primary"
+              dark
+            >{{$t('contactMessageSentTitle')}}</v-toolbar>
+            <v-card-text>
+              <div class="text-h4 pa-12">
+                <div class="d-flex justify-content-center text-center">
+                  {{$t('contactMessageSentText')}}
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                  <font-awesome-icon icon="fa-solid fa-envelope" />
+                </div>
+                
+              </div>
+            </v-card-text>
+            <v-card-actions class="justify-end">
+              <v-btn
+                text
+                @click="contactMessageSentDialog = false"
+              >{{$t('closeBtn')}}</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+
+
         </v-container>
     </v-main>
   </div>
@@ -313,20 +360,40 @@ export default class Home extends Vue {
     expType = "";
     skillDialog = false;
     selectedSkill: SkillModel;
+
+    contactMessageSentDialog = false;
+    contactFormValid = true;
     contactName = "";
+    contactNameRules = [
+        (v: any) => !!v || this.$t('contactNameRuleRequired'),
+        (v: any) => (v && v.length >= 3) || this.$t('contactNameRuleMin'),
+    ]
+
     contactEmail = "";
+    contactEmailRules = [
+        (v: any) => !!v || this.$t('contactEmailRuleRequired'),
+        (v: any) => /.+@.+\..+/.test(v) || this.$t('contactEmailRuleValid'),
+    ]
+
+    contactReason = "";
     contactReasons = [
       { text: this.$t('contactReasonJob'), value: 'contactReasonJob'},
       { text: this.$t('contactReasonContract'), value: 'contactReasonContract'},
       { text: this.$t('contactReasonMentor'), value: 'contactReasonMentor'},
       { text: this.$t('contactReasonOther'), value: 'contactOther'}
     ]
+    contactMessage = ""
+    contactMessageRules = [
+        (v: any) => !!v || this.$t('contactMessageRuleRequired'),
+        (v: any) => (v && v.length >= 10) || this.$t('contactMessageRuleMin'),
+    ];
 
     $refs!: {
       nav: HTMLElement,
       sectionContact: HTMLElement,
       map: any,
-      skillDialog: SkillDialog
+      skillDialog: SkillDialog,
+      contactForm: any
     };
 
     inMove = false;
@@ -367,6 +434,10 @@ export default class Home extends Vue {
       this.showScrollDownText = true;
     }
 
+    mounted() {
+      this.onExpBtnClicked(this.$store.state.ExpModule.items[0]);
+    }
+
     goToContact() {
       this.inPage = false;
       (this.$refs.sectionContact as any).scrollIntoViewPromise({ behavior: "smooth" }).then(() => {
@@ -380,7 +451,7 @@ export default class Home extends Vue {
     }
 
     goToResume() {
-      
+      window.open('https://docs.google.com/document/d/1NWw1jlBe_j6IlpbL1mFjFpdQkcR_6v6V/edit?usp=sharing&ouid=115149250920451854386&rtpof=true&sd=true', '_blank');
     }
 
     mapitemSize(): number[] {
@@ -500,6 +571,26 @@ export default class Home extends Vue {
       
       this.touchStartY = 0;
       return false;
+    }
+
+    sendContactMessage() {
+      if (this.$refs.contactForm.validate()) {
+        let contactObject: any = {
+          name: this.contactName,
+          email: this.contactEmail,
+          reason: this.contactReason,
+          message: this.contactMessage
+        };
+
+        this.contactName = "";
+        this.contactEmail = "";
+        this.contactMessage = "";
+        this.contactReason = "";
+
+        this.$store.dispatch('ContactModule/sendDiscordNotification', contactObject).then(() => {
+          this.contactMessageSentDialog = true;
+        })
+      }
     }
 }
 </script>
