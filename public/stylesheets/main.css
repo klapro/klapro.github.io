@@ -139,8 +139,16 @@ p, h1, h2, h3, h4, h5 {
   }
   
 
+.mousescroll-enter-active {
+  animation: growanim 1s;
+}
+
+.mousescroll-leave-to {
+  animation: reverse growanim 1s;
+}
+
 .bubble-enter-active {
-    animation: growanim 1s;
+    animation: growanim 0.2s;
 }
 
 .slideleft-enter{

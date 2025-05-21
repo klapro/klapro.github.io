@@ -8,6 +8,11 @@
             <SectionContactView />
           </v-container>
       </v-main>
+      
+      <Transition name="mousescroll">
+        <MouseScrollView v-if="showMouseScroll" @click="onMouseScrollClicked"/>
+      </Transition>
+      
   </div>
 </template>
 
@@ -16,6 +21,8 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import Navbar from './Navbar.vue';
+import MouseScrollView from './MouseScrollView.vue';
+
 import SectionHeadView from './sections/SectionHeadView.vue';
 import SectionEmploymentView from './sections/SectionEmploymentView.vue';
 import SectionContactView from './sections/SectionContactView.vue';
@@ -25,6 +32,7 @@ require("@/scroll.js");
 @Component({
     components: {
         Navbar,
+        MouseScrollView,
         SectionHeadView,
         SectionEmploymentView,
         SectionContactView
@@ -36,9 +44,15 @@ export default class Home extends Vue {
     inMove = false;
     offsets: any[] = [];
     touchStartY = 0;
+    mouseScrollTimelapse = false;
 
     get section() {
       return this.$store.state.global.section;
+    }
+
+    get showMouseScroll() {
+      if (this.section == 0 && this.mouseScrollTimelapse) return true;
+      return false;
     }
 
     set section(value: number) {
@@ -56,6 +70,12 @@ export default class Home extends Vue {
               }
         }
       })(this);
+
+      setTimeout(() => {
+        this.$nextTick(() => {
+          this.mouseScrollTimelapse = true;
+        })
+      }, 2000);
 
       window.addEventListener("DOMContentLoaded", (event) => {
         this.calculateSectionOffsets();
@@ -119,6 +139,14 @@ export default class Home extends Vue {
       this.scrollToSection(this.section, true);
     }
 
+    onMouseScrollClicked() {
+      this.mouseScrollTimelapse = false;
+      setTimeout(() => {
+        this.$nextTick(() => {
+          this.moveUp();
+        })
+      }, 1000);
+    }
     scrollToSection(id: any, force = false) {
       if(this.inMove && !force) return false;
       

@@ -5,6 +5,7 @@ Vue.use(VueI18n);
 
 const messages = {
     'en': {
+        "scrollText": "Scroll Down",
         "pitchExpertise": "Expertise in Mobile, Web, Cloud since 2019",
         "titlePitch": "I can code anything you need from A to Z!",
         "emailBtn": "Send me an email",
