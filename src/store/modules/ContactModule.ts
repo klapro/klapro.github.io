@@ -7,7 +7,7 @@ const WEBHOOK_URL = "https://discord.com/api/webhooks/1006623769189679265/wWo3CP
 @Module
 export default class ContactModule extends VuexModule {
     @Action
-    sendDiscordNotification(contact: ContactModel) {
+    send(contact: ContactModel) {
         let reason = "";
 
         switch(contact.reason) {

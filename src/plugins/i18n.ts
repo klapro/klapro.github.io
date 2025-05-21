@@ -5,16 +5,17 @@ Vue.use(VueI18n);
 
 const messages = {
     'en': {
-        "titlePitch": "I am the Software Developer that you need!",
+        "titlePitch": "I can code anything you need from A to Z!",
         "emailBtn": "Send me an email",
         "workTitle": "Software Developer",
         "titleDesc": "I can do it and I have been doing it for many years now!",
         "resumeTitle": "Check my resume",
         "skillTitle": "My skills",
         "employmentTitle": "My journey",
+        "githubTitle": "My Github",
         "contactTitle": "Contact me",
         "linkedinTitle": "My Linkedin",
-        "scrolldownText": "Looking for jobs !",
+        "scrolldownText": "Open for hire !",
         "expCegepTitle": "Computer Science Degree",
         "expCegepDate": "August 2016-June 2019",
         "expCegepSubtitle": "Sorel-Tracy's CEGEP",
@@ -65,7 +66,7 @@ const messages = {
         "employmentTitle": "Mon périple",
         "contactTitle": "Contactez moi",
         "linkedinTitle": "Mon Linkedin",
-        "scrolldownText": "Je cherche une job !",
+        "scrolldownText": "Dispo pour entrevue!",
         "expCegepTitle": "Technique Informatique",
         "expCegepDate": "Août 2016-Juin 2019",
         "expCegepSubtitle": "CEGEP de Sorel-Tracy",

@@ -7,7 +7,7 @@
             >
               <v-img
                 height="70%"
-                src="../assets/smole.png"
+                src="../assets/me.png"
               > </v-img>
 
               <v-card-title class="text-center text-no-flex"> Kevin Larocque </v-card-title>
