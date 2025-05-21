@@ -5,6 +5,7 @@ Vue.use(VueI18n);
 
 const messages = {
     'en': {
+        "pitchExpertise": "Expertise in Mobile, Web, Cloud since 2019",
         "titlePitch": "I can code anything you need from A to Z!",
         "emailBtn": "Send me an email",
         "workTitle": "Software Developer",
@@ -57,6 +58,7 @@ const messages = {
         "contactReasonOther": "Other reasons"
     },
     'fr': {
+        "pitchExpertise": "Expertise en Mobile, Web & Cloud depuis 2019",
         "titlePitch": "Je suis le Développeur Logiciel dont vous avez besoin!",
         "emailBtn": "Envoyez moi un courriel",
         "workTitle": "Développeur Logiciel",

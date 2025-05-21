@@ -5,7 +5,7 @@
                 <img src="@/assets/logo.png" style="width: 48px; height: 48px;" />
                 <div class="text-white">
                     <p class="mb-0 mt-0 fw-bold" style="font-size: 24px;"> Kevin Larocque </p>
-                    <p class="fw-bold" style="font-size: 12px; margin-top: -12px;"> Software Developper </p>
+                    <p class="fw-bold" style="font-size: 12px; margin-top: -12px;"> {{ $t("workTitle") }} </p>
                 </div>
             </div>
             
@@ -23,13 +23,21 @@
                             </v-avatar>
                             <div style="height: 196px;">
                                 <p style="font-size: 28px; letter-spacing: 1.2px;" class="h-auto f-inter-light mt-5 mb-0"> 
-                                    Built through experience, <br /> 
-                                    driven by code. <br /> 
-                                    <span> I  <span class="f-inter-bold"> will </span> make it happen ! </span>
+                                    <template v-if="$store.state.global.language == 'en'">
+                                        Built through experience, <br /> 
+                                        driven by code. <br /> 
+                                        <span> I  <span class="f-inter-bold"> will </span> make it happen ! </span>
+                                    </template>
+                                    <template v-else>
+                                        Batit par l'expérience, <br />
+                                        inspiré par le code. <br />
+                                        <span> Je <span class="f-inter-bold"> vais </span> réaliser votre projet ! </span>
+                                    </template>
+                                    
                                 </p>
                                 <p class="f-inter-light" style="font-size: 16px; letter-spacing: 1.2px;"> 
                                     <i>
-                                        Expertise in Mobile, Web, Cloud since 2019
+                                        {{ $t("pitchExpertise") }}
                                     </i>
                                 </p>
                             </div>
