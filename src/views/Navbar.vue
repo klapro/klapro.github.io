@@ -37,7 +37,7 @@
                 text="contactTitle"
                 @click="goToContact"
               />
-              <LangChooser :items="$store.state.global.langs" />
+              <LanguageDropdown />
           </div>
       </div>
     </div>
@@ -47,12 +47,12 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import RootView from './RootView';
 
-import LangChooser from '@/components/LangChooser.vue';
+import LanguageDropdown from '@/components/LanguageDropdown.vue';
 import TooltipButton from '@/components/TooltipButton.vue';
 
 @Component({
   components: {
-    LangChooser,
+    LanguageDropdown,
     TooltipButton
   }
 })

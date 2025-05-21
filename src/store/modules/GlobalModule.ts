@@ -1,12 +1,13 @@
 import { VuexModule, Module, Mutation, Action } from "vuex-class-modules";
-import LangModel from "../../models/LangModel";
+import LanguageModel from "@/models/LanguageModel";
 
 @Module
 export default class GlobalModule extends VuexModule {
 
     section = 0;
 
-    langs : LangModel[] = [{
+    language = "en";
+    languages : LanguageModel[] = [{
         id: "fr",
         tag: "Français"
     }, {
@@ -17,5 +18,10 @@ export default class GlobalModule extends VuexModule {
     @Mutation
     setSection(section: number) {
         this.section = section;
+    }
+
+    @Mutation
+    setLanguage(value: string) {
+        this.language = value;
     }
 }
