@@ -13,17 +13,6 @@
                 </l-marker>
               </l-map>
 
-              <transition name="slideleft">
-                <div id="expPage" 
-                v-if="show"
-                class="position-absolute w-100 h-100 bg-light d-flex justify-content-center align-items-center">
-                      <transition name="slidetop" appear>
-                        <div class="w-75 h-100 d-flex align-item-center">
-                        </div>
-                      </transition>
-                </div>
-              </transition>
-
               <ExpCarousel
     id="expCarousel"
     class="position-absolute w-100"
@@ -54,7 +43,6 @@ import {LMap, LTileLayer, LControlZoom, LIcon, LControl} from 'vue2-leaflet';
     }
 })
 export default class SectionEmploymentView extends RootView {
-    show = false;
     expType = "";
     iconSize = 64;
 
@@ -83,24 +71,14 @@ export default class SectionEmploymentView extends RootView {
         let map: any = this.$refs.map.mapObject;
         let that = this;
         this.expType = item.code;
-
-        if (this.show) {
-            this.show = false;
-            await this.sleep(1000); 
-        } 
-
         map.flyTo(item.position, 12);
-
-        map.once('moveend', function() {
-            that.show = true;
-        });
     }
 }
 </script>
 
 <style>
 #expCarousel {
-    bottom: 24px;
+    bottom: 72px;
     z-index: 1000; /* Leaflet panes and controls go up to 1000, and #expPage covers the map */
 }
 </style>

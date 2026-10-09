@@ -14,17 +14,6 @@
                 <img :src="item.img" :alt="item.code" draggable="false" />
             </button>
         </div>
- 
-        <div class="controls d-flex mt-3">
-            <button type="button" class="arrow-btn rounded-circle bg-light nice-shadow mr-3"
-                :disabled="active === 0" aria-label="Previous" @click="select(active - 1)">
-                &#8592;
-            </button>
-            <button type="button" class="arrow-btn rounded-circle bg-light nice-shadow"
-                :disabled="active === items.length - 1" aria-label="Next" @click="select(active + 1)">
-                &#8594;
-            </button>
-        </div>
     </div>
 </template>
  
