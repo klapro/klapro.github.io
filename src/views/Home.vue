@@ -4,7 +4,6 @@
       <v-main>
           <v-container fluid class="no-padding" id="app">
             <SectionEmploymentView />
-            <SectionContactView />
           </v-container>
       </v-main>
       

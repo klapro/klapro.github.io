@@ -3,12 +3,8 @@
         <div class="d-flex justify-content-between p-1 text-white">
             <div class="extra-bold d-flex align-items-center">
 
-                <div v-if="$store.state.global.section == 1">
-                    <h3 class="extra-bold"> {{ $t('employmentTitle') }}</h3>
-                </div>
-
-                <div v-if="$store.state.global.section == 2">
-                    <h3 class="extra-bold"> {{ $t('contactTitle') }}</h3>
+                <div class="mt-3">
+                    <h3 class="extra-bold"> Kevin Larocque, {{ $t('workTitle') }}</h3>
                 </div>
             
             </div>
@@ -31,11 +27,6 @@
                 icon="fa-brands fa-linkedin"
                 text="linkedinTitle"
                 @click="goToLinkedin"
-              />
-              <TooltipButton
-                icon="fa-solid fa-envelope"
-                text="contactTitle"
-                @click="goToContact"
               />
               <LanguageDropdown />
           </div>

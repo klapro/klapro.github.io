@@ -9,10 +9,10 @@ export default class GlobalModule extends VuexModule {
     language = "en";
     languages : LanguageModel[] = [{
         id: "fr",
-        tag: "Français"
+        tag: "FR"
     }, {
         id: "en",
-        tag: "English"
+        tag: "EN"
     }];
 
     @Mutation

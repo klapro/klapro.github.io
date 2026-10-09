@@ -56,7 +56,7 @@ const messages = {
         "contactReasonJob": "For a job offer",
         "contactReasonContract": "Offer a contract",
         "contactReasonMentor": "Would like some mentoring",
-        "contactReasonOther": "Other reasons"
+        "contactReasonOther": "Other reasons",
     },
     'fr': {
         "pitchExpertise": "Expertise en Mobile, Web & Cloud depuis 2019",
@@ -107,7 +107,8 @@ const messages = {
         "contactReasonJob": "Pour une offre d'emploi",
         "contactReasonContract": "Un offre de contract",
         "contactReasonMentor": "Besoin de mentorat",
-        "contactReasonOther": "Autre"
+        "contactReasonOther": "Autre",
+        "githubTitle": "Mon Github"
     } 
 };
 

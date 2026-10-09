@@ -5,12 +5,6 @@ export default class RootView extends Vue {
     sleep(ms: number): Promise<any> {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-
-    goToContact() {
-        (this.$refs.sectionContact as any).scrollIntoViewPromise({ behavior: "smooth" }).then(() => {
-          this.$store.commit("global/setSection", 2);
-        })
-    }
   
     goToGithub() {
         window.open('https://github.com/klapro', '_blank');
