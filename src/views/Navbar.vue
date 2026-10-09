@@ -4,7 +4,7 @@
             <div class="extra-bold d-flex align-items-center">
 
                 <div class="mt-3">
-                    <h3 class="extra-bold"> Kevin Larocque, {{ $t('workTitle') }}</h3>
+                    <h3 class="extra-bold"> Kevin Larocque <span style="margin-left: 196px;"></span>{{ $t('workTitle') }}</h3>
                 </div>
             
             </div>

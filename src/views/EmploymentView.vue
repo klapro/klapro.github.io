@@ -28,7 +28,7 @@
 import { Vue, Prop, Component } from "vue-property-decorator";
 import ExpModel from "@/models/ExpModel";
 
-import RootView from "../RootView";
+import RootView from "./RootView";
 import ExpCarousel from "@/components/ExpCarousel.vue";
 import {LMap, LTileLayer, LControlZoom, LIcon, LControl} from 'vue2-leaflet';
 
@@ -42,7 +42,7 @@ import {LMap, LTileLayer, LControlZoom, LIcon, LControl} from 'vue2-leaflet';
         LControl
     }
 })
-export default class SectionEmploymentView extends RootView {
+export default class EmploymentView extends RootView {
     expType = "";
     iconSize = 64;
 

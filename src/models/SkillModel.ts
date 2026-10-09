@@ -1,7 +1,7 @@
 
 export default interface SkillModel {
     id: string,
-    img: string,
+    icon: string,
     name: string,
     rating: number,
     years: number,

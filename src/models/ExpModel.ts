@@ -1,6 +1,3 @@
-import SkillModel from "@/models/SkillModel";
-
-
 interface Position {
     lat: number,
     lng: number
@@ -12,7 +9,7 @@ export default interface ExpModel {
     name: string,
     title: string,
     address: string,
-    img: string,
+    icon: string,
     position: Position,
     monthStart: string,
     yearStart: number,

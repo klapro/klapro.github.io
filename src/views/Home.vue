@@ -1,9 +1,10 @@
 <template>
     <div>
+      <Me />
       <Navbar />
       <v-main>
           <v-container fluid class="no-padding" id="app">
-            <SectionEmploymentView />
+            <EmploymentView />
           </v-container>
       </v-main>
   </div>
@@ -14,13 +15,14 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import Navbar from './Navbar.vue';
-
-import SectionEmploymentView from './sections/SectionEmploymentView.vue';
+import Me from './Me.vue';
+import EmploymentView from './EmploymentView.vue';
 
 @Component({
     components: {
         Navbar,
-        SectionEmploymentView,
+        EmploymentView,
+        Me
     }
 })
 export default class Home extends Vue {
