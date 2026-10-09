@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "sh deploy.sh"
+    "deploy": "sh deploy.sh",
+    "deploy:fast": "sh deploy.sh --no-build"
   },
   "dependencies": {
     "@branu-jp/v-drag": "^0.1.0",
