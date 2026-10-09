@@ -3,14 +3,12 @@
       <Navbar />
       <v-main>
           <v-container fluid class="no-padding" id="app">
-            <SectionHeadView />
             <SectionEmploymentView />
             <SectionContactView />
           </v-container>
       </v-main>
       
       <Transition name="mousescroll">
-        <MouseScrollView v-if="showMouseScroll" @click="onMouseScrollClicked"/>
       </Transition>
       
   </div>
@@ -21,9 +19,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import Navbar from './Navbar.vue';
-import MouseScrollView from './MouseScrollView.vue';
 
-import SectionHeadView from './sections/SectionHeadView.vue';
 import SectionEmploymentView from './sections/SectionEmploymentView.vue';
 import SectionContactView from './sections/SectionContactView.vue';
 
@@ -32,8 +28,6 @@ require("@/scroll.js");
 @Component({
     components: {
         Navbar,
-        MouseScrollView,
-        SectionHeadView,
         SectionEmploymentView,
         SectionContactView
     }
