@@ -19,28 +19,17 @@
                 class="position-absolute w-100 h-100 bg-light d-flex justify-content-center align-items-center">
                       <transition name="slidetop" appear>
                         <div class="w-75 h-100 d-flex align-item-center">
-                          <CegepExpPage v-if="expType === 'cegep'" />
-                          <NexwebExpPage v-else-if="expType === 'nexweb'" />
-                          <TopmenuExpPage v-else />
                         </div>
                       </transition>
                 </div>
               </transition>
 
-              <div id="journeyBar" class="w-100 position-absolute d-flex justify-content-center">
-                <div class="w-50 h-100 position-relative d-flex justify-content-between bg-light p-3 rounded nice-shadow">
-                  <template v-for="(item, index) in $store.state.exp.items">
-                    <JourneyButton 
-                    :index="index+1" 
-                    :item="item"
-                    @click="onExpBtnClicked"/>
-                    <template v-if="index != $store.state.exp.items.length -1">
-                      <hr class="v-divider theme--light mt-5 ml-3 mr-3"/>
-                    </template>
-                  </template>
-                  
-                </div>
-              </div>
+              <ExpCarousel
+    id="expCarousel"
+    class="position-absolute w-100"
+    :items="$store.state.exp.items"
+    :size="150"
+    @select="onExpBtnClicked" />
           </div>
         </div>
     </section>
@@ -51,18 +40,12 @@ import { Vue, Prop, Component } from "vue-property-decorator";
 import ExpModel from "@/models/ExpModel";
 
 import RootView from "../RootView";
-import JourneyButton from "@/components/JourneyButton.vue";
-import CegepExpPage from "./experiences/CegepExpPage.vue";
-import NexwebExpPage from "./experiences/NexwebExpPage.vue";
-import TopmenuExpPage from "./experiences/TopmenuExpPage.vue";
+import ExpCarousel from "@/components/ExpCarousel.vue";
 import {LMap, LTileLayer, LControlZoom, LIcon, LControl} from 'vue2-leaflet';
 
 @Component({
     components: {
-        JourneyButton,
-        CegepExpPage,
-        NexwebExpPage,
-        TopmenuExpPage,
+        ExpCarousel,
         LMap,
         LTileLayer,
         LControlZoom,
@@ -114,3 +97,10 @@ export default class SectionEmploymentView extends RootView {
     }
 }
 </script>
+
+<style>
+#expCarousel {
+    bottom: 24px;
+    z-index: 1000; /* Leaflet panes and controls go up to 1000, and #expPage covers the map */
+}
+</style>
