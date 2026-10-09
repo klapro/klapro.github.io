@@ -55,8 +55,10 @@ export default class SectionEmploymentView extends RootView {
         map: any
     }
 
-    mounted() {
-        this.onExpBtnClicked(this.$store.state.exp.items[0]);
+    async mounted() {
+      await this.$store.dispatch("exp/load");
+      const items = this.$store.state.exp.items;
+      if (items.length) this.onExpBtnClicked(items[0]);
     }
 
     get mapitemSize(): number[] {
