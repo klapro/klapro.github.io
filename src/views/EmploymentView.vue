@@ -20,6 +20,9 @@
     :size="150"
     :disabled="inProcess"
     style="bottom: 52px;"
+    :months="months"
+    :present-label="$t('exp.present')"
+    :more-label="$t('exp.viewMore')"
     :value="$store.state.exp.activeIndex"
     @input="$store.commit('exp/setActive', $event)"
     @select="onExpBtnClicked" />
@@ -77,6 +80,10 @@ export default class EmploymentView extends RootView {
         await this.$store.dispatch("exp/load");
         const items = this.$store.state.exp.items;
         if (items.length) this.onExpBtnClicked(items[0]);
+    }
+
+    get months(): string[] {
+        return this.$t("months") as unknown as string[];
     }
 
     get mapitemSize(): number[] {

@@ -9,7 +9,7 @@ const messages = {
         "pitchExpertise": "Expertise in Mobile, Web, Cloud since 2019",
         "titlePitch": "I can code anything you need from A to Z!",
         "emailBtn": "Send me an email",
-        "workTitle": "Software Developer",
+        "workTitle": "Places I’ve Worked",
         "titleDesc": "I can do it and I have been doing it for many years now!",
         "resumeTitle": "Check my resume",
         "skillTitle": "My skills",
@@ -38,12 +38,16 @@ const messages = {
         "contactReasonContract": "Offer a contract",
         "contactReasonMentor": "Would like some mentoring",
         "contactReasonOther": "Other reasons",
+         "months": ["January", "February", "March", "April", "May", "June",
+               "July", "August", "September", "October", "November", "December"],
+    "exp": { "present": "Present", "viewMore": "Read more" }
+        
     },
     'fr': {
         "pitchExpertise": "Expertise en Mobile, Web & Cloud depuis 2019",
         "titlePitch": "Je suis le Développeur Logiciel dont vous avez besoin!",
         "emailBtn": "Envoyez moi un courriel",
-        "workTitle": "Développeur Logiciel",
+        "workTitle": "Mon parcours",
         "titleDesc": "Je peux en faire et, ça fait des années que j'en fait!",
         "resumeTitle": "Regardez mon cv",
         "skillTitle": "Mes compétences",
@@ -74,7 +78,10 @@ const messages = {
         "contactReasonContract": "Un offre de contract",
         "contactReasonMentor": "Besoin de mentorat",
         "contactReasonOther": "Autre",
-        "githubTitle": "Mon Github"
+        "githubTitle": "Mon Github",
+        "months": ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+               "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+    "exp": { "present": "Présent", "viewMore": "En savoir plus" }
     } 
 };
 
