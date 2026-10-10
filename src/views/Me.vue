@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/logo.png" style="position: absolute; left: 20px; bottom: 210px; width: 48px; z-index: 10000001;" />
         <img src="@/assets/pushpin-red.svg"
                     style="position: absolute; left: 210px; bottom: 225px; width: 56px; z-index: 10000001;" />
         <PeekPortrait

@@ -9,7 +9,7 @@
                         <img src="@/assets/briefcase.svg"
                             style="position: absolute; left: 5px; top: 50%; width: 56px; transform: translateY(-38px);" />
                     </span>
-                    <h3 class="extra-bold mb-0">{{ $t('workTitle') }}</h3>
+                    <h3 class="mb-0">{{ $t('workTitle') }}</h3>
                 </div>
             
             </div>

@@ -9,7 +9,7 @@ const messages = {
         "pitchExpertise": "Expertise in Mobile, Web, Cloud since 2019",
         "titlePitch": "I can code anything you need from A to Z!",
         "emailBtn": "Send me an email",
-        "workTitle": "Places I’ve Worked",
+        "workTitle": "Places I’ve worked at",
         "titleDesc": "I can do it and I have been doing it for many years now!",
         "resumeTitle": "Check my resume",
         "skillTitle": "My skills",

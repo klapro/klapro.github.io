@@ -31,20 +31,14 @@
                 </button>
             </div>
 
-            <!-- date range of the active item, above the centered card -->
-            <div v-if="activeItem" class="exp-dates">
-                <div class="exp-dates-pill" :style="{ minWidth: size + 24 + 'px' }">
-                    <transition name="label-fade">
-                        <span :key="activeItem.id">{{ dateRange }}</span>
-                    </transition>
-                </div>
-            </div>
-
-            <!-- name of the active item, under the centered card -->
+            <!-- name + dates of the active item, one box above the centered card -->
             <div v-if="activeItem" class="exp-footer">
-                <div class="exp-label">
+                <div class="exp-label" :style="{ minWidth: size + 24 + 'px' }">
                     <transition name="label-fade">
-                        <span :key="activeItem.id">{{ activeItem.name }}</span>
+                        <span :key="activeItem.id" class="exp-label-content">
+                            <span class="exp-label-name">{{ activeItem.name }}</span>
+                            <span class="exp-label-dates">{{ dateRange }}</span>
+                        </span>
                     </transition>
                 </div>
             </div>
@@ -289,8 +283,8 @@ export default class ExpCarousel extends Vue {
     }
 }
 
-/* date range above the active card */
-.exp-dates {
+/* name + dates above the active card (max z-index value browsers accept: 2147483647) */
+.exp-footer {
     position: absolute;
     bottom: 100%;
     left: 0;
@@ -299,50 +293,34 @@ export default class ExpCarousel extends Vue {
     z-index: 2147483647;
     pointer-events: none;
 }
-.exp-dates-pill {
-    display: grid;             /* old and new text share one cell while fading */
-    width: fit-content;
-    margin: 0 auto;            /* centered above the card, a bit wider than it */
-    padding: 5px 14px;
-    border-radius: 999px;
-    background: rgba(0, 0, 0, 0.55);
-    color: #fff;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-}
-.exp-dates-pill > span {
-    grid-area: 1 / 1;
-    text-align: center;
-}
-
-/* name under the active card (max z-index value browsers accept: 2147483647) */
-.exp-footer {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    margin-top: 12px;
-    z-index: 2147483647;
-    pointer-events: none;
-}
 .exp-label {
     display: grid;             /* old and new name share one cell while fading */
     width: fit-content;
     max-width: 90%;
     margin: 0 auto;
-    padding: 4px 16px;
-    border-radius: 999px;
+    padding: 7px 18px;
+    border-radius: 14px;
     background: rgba(0, 0, 0, 0.55);
     color: #fff;
-    font-size: 15px;
-    font-weight: 600;
     white-space: nowrap;
 }
-.exp-label > span {
+.exp-label-content {
     grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
     text-align: center;
+}
+.exp-label-name {
+    font-size: 15px;
+    font-weight: 600;
+}
+.exp-label-dates {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    opacity: 0.85;
 }
 .label-fade-enter-active,
 .label-fade-leave-active {
