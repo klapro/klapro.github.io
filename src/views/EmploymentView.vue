@@ -2,7 +2,7 @@
     <section id="section-employments">
         <div class="w-100 h-100 d-flex">
           <div id="map" class="w-100 h-100 overflow-hidden position-relative">
-              <l-map ref="map" class="w-100 h-100" :zoom="mapZoom" :center="mapCenter" :options="{zoomControl: false}">
+              <l-map ref="map" class="w-100 h-100" :zoom="mapZoom" :center="mapCenter" :options="mapOptions">
                 <l-tile-layer :url="mapUrl" :attribution="mapAttribution"></l-tile-layer>
                 <l-marker :lat-lng="item.position" v-for="item in $store.state.exp.items" :key="item.id">
                   <l-icon
@@ -18,6 +18,10 @@
     class="position-absolute w-100"
     :items="$store.state.exp.items"
     :size="150"
+    :disabled="inProcess"
+    style="bottom: 52px;"
+    :value="$store.state.exp.activeIndex"
+    @input="$store.commit('exp/setActive', $event)"
     @select="onExpBtnClicked" />
           </div>
         </div>
@@ -45,20 +49,34 @@ import {LMap, LTileLayer, LControlZoom, LIcon, LControl} from 'vue2-leaflet';
 export default class EmploymentView extends RootView {
     expType = "";
     iconSize = 64;
+    inProcess = false;
 
-    mapCenter = [45.505331312, -73.55249779];
-    mapZoom = 8;
+    mapCenter = [46.015027997029925,-73.14909971534128];
+    mapZoom = 12;
     mapUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
     mapAttribution = "&copy; <a href='https://openstreetmap.org/copyright'>OpenStreetMap contributors</a>";
+
+    mapOptions = {
+        zoomControl: false,
+        dragging: false,
+        touchZoom: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: false,
+        tap: false,          // older mobile Safari handling
+        zoomSnap: 0.1        // optional: smoother flyTo end positions
+    };
 
     $refs!: {
         map: any
     }
 
     async mounted() {
-      await this.$store.dispatch("exp/load");
-      const items = this.$store.state.exp.items;
-      if (items.length) this.onExpBtnClicked(items[0]);
+        this.inProcess = false;
+        await this.$store.dispatch("exp/load");
+        const items = this.$store.state.exp.items;
+        if (items.length) this.onExpBtnClicked(items[0]);
     }
 
     get mapitemSize(): number[] {
@@ -70,10 +88,15 @@ export default class EmploymentView extends RootView {
     }
 
     async onExpBtnClicked(item: ExpModel) {
-        let map: any = this.$refs.map.mapObject;
+        if (this.inProcess) return;
+        this.inProcess = true;
         let that = this;
+        let map: any = this.$refs.map.mapObject;
         this.expType = item.code;
         map.flyTo(item.position, 12);
+         map.once('moveend', function() {
+            that.inProcess = false;
+        });
     }
 }
 </script>

@@ -1,7 +1,10 @@
 <template>
     <div>
-        <img class="position-fixed" src="@/assets/me_arms.png" style="bottom: -200px; left: 96px; z-index: 100000;"/>
-        <img class="position-fixed" src="@/assets/me.png" style="bottom: -200px; left: 96px; z-index: 999;"/>
+        <PeekPortrait
+    class="position-absolute"
+    style="left: 42px; bottom: 42px; z-index: 10000000; transform: rotate(-2.2deg);"
+    :photo="require('@/assets/image.png')"
+    :size="200" />
     </div>
 </template>
 
@@ -9,7 +12,13 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-@Component({})
+import PeekPortrait from '@/components/PeekPortrait.vue';
+
+@Component({
+    components: {
+        PeekPortrait
+    }
+}) 
 export default class Me extends Vue {
 }
 </script>

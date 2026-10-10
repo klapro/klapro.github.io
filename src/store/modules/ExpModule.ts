@@ -8,11 +8,21 @@ export const EXP_BASE = `${CONTENT_FOLDER}exp/`;
 export default class ExpModule extends VuexModule {
     items: ExpModel[] = [];
     loaded = false;
+    activeIndex = 0;
+
+    get activeItem(): ExpModel | undefined {
+        return this.items[this.activeIndex];
+    }
 
     @Mutation
     setItems(items: ExpModel[]) {
         this.items = items;
         this.loaded = true;
+    }
+
+    @Mutation
+    setActive(index: number) {
+        if (index >= 0 && index < this.items.length) this.activeIndex = index;
     }
 
     @Action
@@ -23,4 +33,5 @@ export default class ExpModule extends VuexModule {
         // turn relative image paths into real URLs
         this.setItems(raw.experiences.map((i: any) => ({ ...i, img: EXP_BASE +  i.icon })));
     }
+    // load() stays as it is
 }

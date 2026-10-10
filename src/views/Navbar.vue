@@ -1,10 +1,15 @@
 <template>
     <div ref="nav" :class="navDirection" class="w-100 text-white" style="background: #1976d2;">
         <div class="d-flex justify-content-between p-1 text-white">
-            <div class="extra-bold d-flex align-items-center">
+            <div class="d-flex align-items-center">
 
-                <div class="mt-3">
-                    <h3 class="extra-bold"> Kevin Larocque <span style="margin-left: 196px;"></span>{{ $t('workTitle') }}</h3>
+                <div class="d-flex align-items-center mb-0" style="gap: 8px; margin-left: 42px;">
+                    <h3 class="extra-bold mb-0"> Kevin Larocque </h3>  
+                    <span style="position: relative; display: inline-block; width: 64px; height: 32px;">
+                        <img src="@/assets/briefcase.svg"
+                            style="position: absolute; left: 5px; top: 50%; width: 56px; transform: translateY(-38px);" />
+                    </span>
+                    <h3 class="extra-bold mb-0">{{ $t('workTitle') }}</h3>
                 </div>
             
             </div>

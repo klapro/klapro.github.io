@@ -1,53 +1,69 @@
 {
-    "experiences": [
-        {
-            "id": "1",
-            "name": "Cegep Sorel-Tracy",
-            "code": "cegep",
-            "title": "Software Developer (Intern)",
-            "icon": "icons/diploma.png",
-            "address": "3000 Bd de Tracy, Sorel-Tracy, QC J3R 5B9",
-            "position": {
-            "lat": 46.015027997029925,
-            "lng": -73.14909971534128
-            },
-            "monthStart": "January",
-            "yearStart": 2019,
-            "monthEnd": "May",
-            "yearEnd": 2019
-        },
-        {
-            "id": "2",
-            "name": "Nexweb",
-            "code": "nexweb",
-            "title": "Software Developer",
-            "description": "",
-            "icon": "icons/nexweb.png",
-            "address": "1700 Saint-Patrick St., Montreal, QC H3K 1A7",
-            "position": {
-            "lat": 45.48510683391656,
-            "lng": -73.56342578465872
-            },
-            "monthStart": "June",
-            "yearStart": 2019,
-            "monthEnd": "February",
-            "yearEnd": 2020
-        },
-        {
-            "id": "3",
-            "name": "Top Menu",
-            "code": "topmenu",
-            "title": "Software Developer",
-            "icon": "icons/topmenu.png",
-            "address": "8615 Boul Saint-Laurent, Montréal QC H2P 2M9",
-            "position": {
-            "lat": 45.54167163293565,
-            "lng": -73.63914482880354
-            },
-            "monthStart": "March",
-            "yearStart": 2020,
-            "monthEnd": "June",
-            "yearEnd": 2022
-        }
-    ]
+  "experiences": [
+    {
+      "id": "1",
+      "name": "Cégep Sorel-Tracy",
+      "code": "cegep",
+      "icon": "icons/cegep.jpg",
+      "address": "3000 Bd de Tracy, Sorel-Tracy, QC J3R 5B9",
+      "position": {
+        "lat": 46.015027997029925,
+        "lng": -73.14909971534128
+      },
+      "start": "2019-01-01",
+      "end": "2019-05-31"
+    },
+    {
+      "id": "2",
+      "name": "Nexweb",
+      "code": "nexweb",
+      "icon": "icons/nexweb.png",
+      "address": "1700 Saint-Patrick St., Montreal, QC H3K 1A7",
+      "position": {
+        "lat": 45.48510683391656,
+        "lng": -73.56342578465872
+      },
+      "start": "2019-06-01",
+      "end": "2020-02-29"
+    },
+    {
+      "id": "3",
+      "name": "Top Menu",
+      "code": "topmenu",
+      "icon": "icons/topmenu.png",
+      "address": "8615 Boul Saint-Laurent, Montréal QC H2P 2M9",
+      "position": {
+        "lat": 45.54167163293565,
+        "lng": -73.63914482880354
+      },
+      "start": "2020-03-01",
+      "end": "2022-06-30"
+    },
+    {
+      "id": "4",
+      "name": "EMFluids",
+      "code": "emfluids",
+      "icon": "icons/emfluids.jpeg",
+      "address": "87 Bentley Ave, Ottawa ON K2E 6T7",
+      "position": {
+        "lat": 45.335402151375185,
+        "lng": -75.71563853436766
+      },
+      "start": "2022-10-01",
+      "end": "2025-04-30"
+    },
+    {
+      "id": "5",
+      "name": "Unicorne",
+      "code": "unicorne",
+      "icon": "icons/unicorne.jpeg",
+      "address": "300-797 Boul. Lebourgneuf, Quebec QC G2J 0B5",
+      "position": {
+        "lat": 46.84126446928695,
+        "lng": -71.28060883922723
+      },
+      "start": "2025-06-01",
+      "end": null
+    }
+  ]
 }
