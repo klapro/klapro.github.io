@@ -4,10 +4,10 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import GlobalModule from './modules/GlobalModule';
-import ExpModule from './modules/ExpModule';
+import ContentModule from './modules/ContentModule';
 
 const store = new Vuex.Store({});
 export default store;
 
 const globalModule = new GlobalModule({store: store, name: "global"});
-const expModule = new ExpModule({store: store, name: "exp"});
+const expModule = new ContentModule({store: store, name: "content"});

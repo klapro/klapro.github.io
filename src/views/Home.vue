@@ -4,7 +4,7 @@
       <Navbar />
       <v-main>
           <v-container fluid class="no-padding" id="app">
-            <EmploymentView />
+            <ContentView />
           </v-container>
       </v-main>
   </div>
@@ -16,12 +16,12 @@ import Component from 'vue-class-component';
 
 import Navbar from './Navbar.vue';
 import Me from './Me.vue';
-import EmploymentView from './EmploymentView.vue';
+import ContentView from './ContentView.vue';
 
 @Component({
     components: {
         Navbar,
-        EmploymentView,
+        ContentView,
         Me
     }
 })

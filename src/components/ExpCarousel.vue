@@ -9,7 +9,7 @@
                 :class="{ 'is-active': i === active }"
                 :style="cardStyle(i)"
                 :aria-hidden="i !== active ? 'true' : 'false'">
-                <img :src="item.img" :alt="item.code" draggable="false" />
+                <img :src="item.icon" :alt="item.id" draggable="false" />
 
                 <!-- overlay on the ACTIVE card: plus sign + text, click = "open" event -->
                 <button
@@ -79,7 +79,7 @@
 
 <script lang="ts">
 import { Vue, Prop, Component } from "vue-property-decorator";
-import ExpModel from "@/models/ExpModel";
+import ExpModel from "@/models";
 
 @Component
 export default class ExpCarousel extends Vue {
